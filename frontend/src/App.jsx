@@ -20,7 +20,8 @@ function App() {
     const [health, setHealth] = useState('Checking...');
 
     useEffect(() => {
-        fetch('/api/posts/')
+        const API_BASE = import.meta.env.VITE_API_URL || '/api';
+        fetch(`${API_BASE}/posts/`)
             .then(res => res.status === 200 ? setHealth('CONNECTED') : setHealth('SERVER ERROR'))
             .catch(err => setHealth('OFFLINE'));
     }, []);
