@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+const API_BASE = import.meta.env.VITE_API_URL || '/api';
+
 const api = axios.create({
-    baseURL: '/api',
+    baseURL: API_BASE,
 });
 
 export const createPost = async (arg = "Untitled") => {
@@ -59,7 +61,7 @@ export const generateAI = async (prompt, imageFile = null) => {
         formData.append('image', imageFile);
     }
 
-    const response = await fetch('/api/ai/generate', {
+    const response = await fetch(`${API_BASE}/ai/generate`, {
         method: 'POST',
         body: formData, // No Content-Type header needed, browser sets it for FormData
     });

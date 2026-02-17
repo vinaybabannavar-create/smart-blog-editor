@@ -7,3 +7,7 @@ requests
 aiohttp
 google-generativeai
 tinydb
+gunicorn
+Pillow
+pymongo
+python-multipart
